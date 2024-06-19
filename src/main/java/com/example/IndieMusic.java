@@ -7,4 +7,5 @@ public class IndieMusic implements Music{
         return "Nara";
     }
     
+    
 }

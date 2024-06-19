@@ -1,10 +1,9 @@
 package com.example;
 
-public class ClassicalMusic implements Music{
-
+public class Jazz implements Music{
     @Override
     public String getSong() {
-        return "Hungar Rhapsody";
+        return "Hit the road jack";
     }
     
     
