@@ -22,7 +22,9 @@
         <ref bean="jazzMusic"/>
     </util:list>
 
-    <bean id="musicPlayer" class="com.example.MusicPlayer">
+    <bean id="musicPlayer" 
+    class="com.example.MusicPlayer"
+    scope="prototype">
         <property name="music" ref="musicList"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
