@@ -12,8 +12,12 @@
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="classicalMusic" class="com.example.ClassicalMusic"/>
-    <bean id="indieMusic" class="com.example.IndieMusic"/>
+    <bean id="musicBean" 
+    class="com.example.ClassicalMusic"
+    init-method="doMyInit"
+    destroy-method="doMyDestroy"
+    factory-method="getClassicalMusic"/>
+    <!-- <bean id="indieMusic" class="com.example.IndieMusic"/>
     <bean id="jazzMusic" class="com.example.Jazz"/>
 
     <util:list id="musicList">
@@ -28,6 +32,6 @@
         <property name="music" ref="musicList"/>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+    </bean> -->
 
 </beans>
