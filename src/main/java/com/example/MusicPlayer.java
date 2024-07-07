@@ -1,24 +1,50 @@
 package com.example;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import com.example.Genre;
+
+
+import java.util.List;
+import java.util.Random;
+
 @Component
 public class MusicPlayer {
-    private Music music1;
-    private Music music2;
-    
+    private final Music classicalMusic;
+    private final Music jazzMusic;
+    private final Music indieMusic;
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
     @Autowired
-    public MusicPlayer(@Qualifier("jazzMusic") Music music1, @Qualifier("classicalMusic")Music music2) {
-        this.music1 = music1;
-        this.music2 = music2;
+    public MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic,
+                       @Qualifier("jazzMusic") Music jazzMusic,
+                       @Qualifier("indieMusic") Music indieMusic) {
+        this.classicalMusic = classicalMusic;
+        this.jazzMusic = jazzMusic;
+        this.indieMusic = indieMusic;
     }
 
-    public String playMusic() {
-        return "Playing: " + music1.getSong() + ", " + music2.getSong();
-    } 
+    public void playMusic(Genre genre) {
+        List<String> songs;
+        switch (genre) {
+            case CLASSICAL:
+                songs = (List<String>) classicalMusic.getSong();
+                break;
+            case JAZZ:
+                songs = (List<String>) jazzMusic.getSong();
+                break;
+            case INDIE:
+                songs = (List<String>) indieMusic.getSong();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid genre: " + genre);
+        }
 
+        Random random = new Random();
+        int randomIndex = random.nextInt(songs.size());
+        String randomSong = songs.get(randomIndex);
+        System.out.println(ANSI_GREEN + "Playing random song: " + randomSong + ANSI_RESET);
+    }
 }

@@ -1,12 +1,18 @@
 package com.example;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import com.example.Genre;
 
 @Component
 public class Computer {
     private int id;
     private MusicPlayer musicPlayer;
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
 
     @Autowired
     public Computer(MusicPlayer musicPlayer) {
@@ -14,8 +20,11 @@ public class Computer {
         this.musicPlayer = musicPlayer;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "Computer " + id + " " + musicPlayer.playMusic();
-    }
+    Genre genre = Genre.values()[new Random().nextInt(Genre.values().length)];
+    musicPlayer.playMusic(genre);
+    return ANSI_GREEN + "Computer " + id + " " + ANSI_RESET;
+}
+
 }
