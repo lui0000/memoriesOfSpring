@@ -13,18 +13,17 @@ public class Computer {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
 
-
     @Autowired
     public Computer(MusicPlayer musicPlayer) {
         this.id = 1;
         this.musicPlayer = musicPlayer;
     }
 
-   @Override
+    @Override
     public String toString() {
-    Genre genre = Genre.values()[new Random().nextInt(Genre.values().length)];
-    musicPlayer.playMusic(genre);
-    return ANSI_GREEN + "Computer " + id + " " + ANSI_RESET;
-}
+        Genre genre = Genre.values()[new Random().nextInt(Genre.values().length)];
+        musicPlayer.playMusic(genre);
+        return ANSI_GREEN + "Computer " + id + " " + ANSI_RESET;
+    }
 
 }

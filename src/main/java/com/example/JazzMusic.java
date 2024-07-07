@@ -17,7 +17,6 @@ public class JazzMusic implements Music {
 
     @Override
     public List<String> getSong() {
-        return jazzSongs; 
+        return jazzSongs;
     }
 }
-
