@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class IndieMusic implements Music {
     private List<String> indieSongs = new ArrayList<>();
 

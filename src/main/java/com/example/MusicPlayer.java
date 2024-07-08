@@ -9,33 +9,20 @@ import com.example.Genre;
 import java.util.List;
 import java.util.Random;
 
-@Component
+
 public class MusicPlayer {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    
     private final Music classicalMusic;
     private final Music jazzMusic;
     private final Music indieMusic;
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RESET = "\u001B[0m";
-    @Value("${musicPlayer.volume}")
-    private int volume;
-    @Value("${musicPlayer.name}")
-    private String name;
-
-    @Autowired
-    public MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic,
-            @Qualifier("jazzMusic") Music jazzMusic,
-            @Qualifier("indieMusic") Music indieMusic) {
+    public MusicPlayer(Music classicalMusic, Music jazzMusic, Music indieMusic) {
         this.classicalMusic = classicalMusic;
         this.jazzMusic = jazzMusic;
         this.indieMusic = indieMusic;
     }
-    public int getVolume() {
-        return volume;
-    }
 
-    public String getName() {
-        return name;
-    }
 
     public void playMusic(Genre genre) {
         List<String> songs;

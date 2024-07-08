@@ -9,7 +9,6 @@ import javax.annotation.PreDestroy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
 public class ClassicalMusic implements Music {
     private List<String> classicalSongs = new ArrayList<>();
 

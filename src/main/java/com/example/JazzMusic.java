@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class JazzMusic implements Music {
     private List<String> jazzSongs = new ArrayList<>();
 
