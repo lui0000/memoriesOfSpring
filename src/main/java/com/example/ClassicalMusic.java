@@ -27,10 +27,12 @@ public class ClassicalMusic implements Music {
     public List<String> getSong() {
         return classicalSongs;
     }
+
     @PostConstruct
     public void doMyInit() {
         System.out.println("Doing initialization");
     }
+
     @PreDestroy
     public void doMyDestroy() {
         System.out.println("Doing destruction");
